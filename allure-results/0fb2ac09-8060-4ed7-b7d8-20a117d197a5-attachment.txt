@@ -1,0 +1,50 @@
+Error clicking Login Option: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('link', { name: 'Login' })
+
+    at HomePage.clickLoginOption (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:55:36)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:32:20 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts',
+      line: 55,
+      column: 36,
+      function: 'HomePage.clickLoginOption'
+    },
+    category: 'pw:api',
+    title: "Click getByRole('link', { name: 'Login' })",
+    apiName: 'locator.click',
+    params: {
+      selector: 'internal:role=link[name="Login"i]',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@35',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@35',
+      _title: "Click getByRole('link', { name: 'Login' })",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1770355417241,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('link', { name: 'Login' })\x1B[22m\n",
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('link', { name: 'Login' })\x1B[22m\n" +
+        '\n' +
+        '    at HomePage.clickLoginOption (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:55:36)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:32:20',
+      cause: undefined
+    }
+  }
+}

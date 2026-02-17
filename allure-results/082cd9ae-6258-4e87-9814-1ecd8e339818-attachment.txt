@@ -1,0 +1,50 @@
+Error clicking Register Option: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('link', { name: 'Register' })
+
+    at HomePage.clickRegisterOption (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:45:39)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/accountRegistration.spec.ts:32:20 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts',
+      line: 45,
+      column: 39,
+      function: 'HomePage.clickRegisterOption'
+    },
+    category: 'pw:api',
+    title: "Click getByRole('link', { name: 'Register' })",
+    apiName: 'locator.click',
+    params: {
+      selector: 'internal:role=link[name="Register"i]',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@37',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@37',
+      _title: "Click getByRole('link', { name: 'Register' })",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1770183116983,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('link', { name: 'Register' })\x1B[22m\n",
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('link', { name: 'Register' })\x1B[22m\n" +
+        '\n' +
+        '    at HomePage.clickRegisterOption (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:45:39)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/accountRegistration.spec.ts:32:20',
+      cause: undefined
+    }
+  }
+}

@@ -1,0 +1,51 @@
+Error updating product quantity: locator.fill: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('//tr//input[@type=\'text\']')
+
+    at ShoppingCartPage.updateProductQuantity (/Users/wine/Desktop/Playwright_Opencart/pages/ShoppingCartPage.ts:39:44)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/modifySCart.spec.ts:59:28 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/ShoppingCartPage.ts',
+      line: 39,
+      column: 44,
+      function: 'ShoppingCartPage.updateProductQuantity'
+    },
+    category: 'pw:api',
+    title: `Fill "3" locator('//tr//input[@type=\\'text\\']')`,
+    apiName: 'locator.fill',
+    params: {
+      selector: "//tr//input[@type='text']",
+      value: '3',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@46',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@46',
+      _title: `Fill "3" locator('//tr//input[@type=\\'text\\']')`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1770782964088,
+    error: {
+      message: 'Error: locator.fill: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('//tr//input[@type=\\'text\\']')\x1B[22m\n",
+      stack: 'Error: locator.fill: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('//tr//input[@type=\\'text\\']')\x1B[22m\n" +
+        '\n' +
+        '    at ShoppingCartPage.updateProductQuantity (/Users/wine/Desktop/Playwright_Opencart/pages/ShoppingCartPage.ts:39:44)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/modifySCart.spec.ts:59:28',
+      cause: undefined
+    }
+  }
+}

@@ -1,0 +1,3 @@
+testName,email,password,expectedResult
+Valid Login Test,testuser1,password123,success
+Invalid Login Test,testuser2,password456,failure

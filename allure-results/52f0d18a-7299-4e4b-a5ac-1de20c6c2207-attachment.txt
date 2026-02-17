@@ -1,0 +1,1 @@
+Shopping cart is empty, skipping click action.

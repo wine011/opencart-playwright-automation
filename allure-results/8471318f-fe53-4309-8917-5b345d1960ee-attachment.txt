@@ -1,0 +1,46 @@
+Error clicking My Account Menu: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('.dropdown-toggle.show')
+
+    at HomePage.clickMyAccountMenu (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:35:38)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/accountRegistration.spec.ts:31:20 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts',
+      line: 35,
+      column: 38,
+      function: 'HomePage.clickMyAccountMenu'
+    },
+    category: 'pw:api',
+    title: "Click locator('.dropdown-toggle.show')",
+    apiName: 'locator.click',
+    params: { selector: '.dropdown-toggle.show', strict: true, timeout: 0 },
+    group: undefined,
+    stepId: 'pw:api@36',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@36',
+      _title: "Click locator('.dropdown-toggle.show')",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1770177253703,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('.dropdown-toggle.show')\x1B[22m\n",
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('.dropdown-toggle.show')\x1B[22m\n" +
+        '\n' +
+        '    at HomePage.clickMyAccountMenu (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:35:38)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/accountRegistration.spec.ts:31:20',
+      cause: undefined
+    }
+  }
+}

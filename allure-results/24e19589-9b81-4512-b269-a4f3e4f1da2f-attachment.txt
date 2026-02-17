@@ -1,0 +1,4 @@
+User is Logged In after registration.
+User is registered!
+User is Logged In.
+User searched a product.

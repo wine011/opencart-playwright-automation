@@ -1,0 +1,50 @@
+Error updating product quantity: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('button', { name: 'Update' })
+
+    at ShoppingCartPage.updateProductQuantity (/Users/wine/Desktop/Playwright_Opencart/pages/ShoppingCartPage.ts:40:41)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/modifySCart.spec.ts:64:5 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/ShoppingCartPage.ts',
+      line: 40,
+      column: 41,
+      function: 'ShoppingCartPage.updateProductQuantity'
+    },
+    category: 'pw:api',
+    title: "Click getByRole('button', { name: 'Update' })",
+    apiName: 'locator.click',
+    params: {
+      selector: 'internal:role=button[name="Update"i]',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@53',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@53',
+      _title: "Click getByRole('button', { name: 'Update' })",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1770959419879,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('button', { name: 'Update' })\x1B[22m\n",
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('button', { name: 'Update' })\x1B[22m\n" +
+        '\n' +
+        '    at ShoppingCartPage.updateProductQuantity (/Users/wine/Desktop/Playwright_Opencart/pages/ShoppingCartPage.ts:40:41)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/modifySCart.spec.ts:64:5',
+      cause: undefined
+    }
+  }
+}

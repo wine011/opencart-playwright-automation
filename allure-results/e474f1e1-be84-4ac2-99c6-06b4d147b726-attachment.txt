@@ -1,0 +1,8 @@
+User is Logged In after registration.
+User is registered!
+User is Logged In.
+User searched a product.
+User added a product to the cart.
+Clicked on Shopping Cart Link.
+User updated the cart!
+User filled the personal details to check out!

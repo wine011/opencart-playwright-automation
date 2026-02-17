@@ -1,0 +1,52 @@
+Error selecting Guest Checkout option: locator.check: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole('radio', { name: 'Guest Checkout' })
+
+    at CheckOutPage.selectGuestCheckout (/Users/wine/Desktop/Playwright_Opencart/pages/CheckOutPage.ts:37:44)
+    at proceedToCheckout (/Users/wine/Desktop/Playwright_Opencart/tests/endToEnd.spec.ts:202:24)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/endToEnd.spec.ts:69:5 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/CheckOutPage.ts',
+      line: 37,
+      column: 44,
+      function: 'CheckOutPage.selectGuestCheckout'
+    },
+    category: 'pw:api',
+    title: "Check getByRole('radio', { name: 'Guest Checkout' })",
+    apiName: 'locator.check',
+    params: {
+      selector: 'internal:role=radio[name="Guest Checkout"i]',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@83',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@83',
+      _title: "Check getByRole('radio', { name: 'Guest Checkout' })",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1771301718794,
+    error: {
+      message: 'Error: locator.check: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('radio', { name: 'Guest Checkout' })\x1B[22m\n",
+      stack: 'Error: locator.check: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('radio', { name: 'Guest Checkout' })\x1B[22m\n" +
+        '\n' +
+        '    at CheckOutPage.selectGuestCheckout (/Users/wine/Desktop/Playwright_Opencart/pages/CheckOutPage.ts:37:44)\n' +
+        '    at proceedToCheckout (/Users/wine/Desktop/Playwright_Opencart/tests/endToEnd.spec.ts:202:24)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/endToEnd.spec.ts:69:5',
+      cause: undefined
+    }
+  }
+}

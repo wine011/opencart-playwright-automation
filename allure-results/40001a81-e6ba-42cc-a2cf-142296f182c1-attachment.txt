@@ -1,0 +1,27 @@
+Error filling email field: locator.fill: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('textbox', { name: 'E-Mail Address' })
+
+    at LogInPage.fillEmail (/Users/wine/Desktop/Playwright_Opencart/pages/LogInPage.ts:35:35)
+    at LogInPage.userLogIn (/Users/wine/Desktop/Playwright_Opencart/pages/LogInPage.ts:79:14)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:35:15
+Error filling password field: locator.fill: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('textbox', { name: 'Password' })
+
+    at LogInPage.fillPassword (/Users/wine/Desktop/Playwright_Opencart/pages/LogInPage.ts:45:38)
+    at LogInPage.userLogIn (/Users/wine/Desktop/Playwright_Opencart/pages/LogInPage.ts:80:14)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:35:15
+Error clicking Login Option: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('link', { name: 'Login' })
+
+    at HomePage.clickLoginOption (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:55:36)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:32:14
+Error clicking Login button: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for getByRole('button', { name: 'Login' })
+
+    at LogInPage.clickLogin (/Users/wine/Desktop/Playwright_Opencart/pages/LogInPage.ts:55:36)
+    at LogInPage.userLogIn (/Users/wine/Desktop/Playwright_Opencart/pages/LogInPage.ts:81:14)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:35:15
