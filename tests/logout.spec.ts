@@ -27,7 +27,7 @@ test.afterEach('Close the browser', async ({ page }) => {
     await page.close();
 });
 
-test('Verify logout', async () => {
+test('@sanity @regression @auth Verify logout', async () => {
     // Go to Homepage and click Login Option
     await homePage.clickMyAccountMenu();
     await homePage.clickLoginOption();

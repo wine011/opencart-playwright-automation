@@ -2,7 +2,7 @@ export class TestConfig {
     appUrl = 'http://localhost/opencart/';
 
     // Valid login credentials
-    email = "w.tzkthu05@gmail.com"
+    email = "user1@gmail.com"
     password = "asdf123"; // 7 characters
 
     // Product details

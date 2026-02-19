@@ -23,7 +23,7 @@ test.afterEach('Close the browser', async ({ page }) => {
     await page.close();
 });
 
-test('Verify the account registration functionality', { tag: '@sanity @regression ' }, async () => {
+test('@sanity @regression @auth Verify the account registration functionality', async () => {
 
     homePage.isHomePageExisted();
 

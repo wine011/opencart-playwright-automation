@@ -24,7 +24,7 @@ test.afterEach('Close the browser', async ({ page }) => {
     await page.close();
 });
 
-test('Verify product is added to cart successfully', { tag: '@sanity @regression' }, async () => {
+test('@sanity @regression Verify product is added to cart successfully', async () => {
     // Check homepage exists or not
     expect(await homePage.isHomePageExisted()).toBeTruthy();
 

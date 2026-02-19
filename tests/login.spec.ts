@@ -25,7 +25,7 @@ test.afterEach('Close the browser', async ({ page }) => {
     await page.close();
 });
 
-test('Verify the login functionality with valid credentials', { tag: '@sanity @regression ' }, async () => {
+test('@sanity @regression @auth Verify the login functionality with valid credentials', async () => {
     expect(await homePage.isHomePageExisted()).toBe(true);
 
     // Click on My Account Menu and Login Option

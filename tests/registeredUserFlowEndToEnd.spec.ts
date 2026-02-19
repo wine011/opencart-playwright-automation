@@ -50,7 +50,7 @@ test.beforeEach('Set up required POM', async ({ page }) => {
 });
 
 
-test('End to End Test for Registered User', { tag: ['@e2e', '@regression'] }, async () => {
+test('@e2e @regression End to End Test for Registered User', async () => {
 
     await performRegistration();
     console.log("User is registered!")

@@ -21,7 +21,7 @@ test.afterEach('Close the browser', async ({ page }) => {
     await page.close();
 });
 
-test('Verify search product functionality', { tag: '@sanity @regression ' }, async () => {
+test('@sanity @regression Verify search product functionality', async () => {
     // Check homepage exists or not
     expect(await homePage.isHomePageExisted()).toBeTruthy();
 

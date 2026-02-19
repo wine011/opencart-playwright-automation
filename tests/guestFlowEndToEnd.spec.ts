@@ -39,7 +39,7 @@ test.beforeEach('Set up required POM', async ({ page }) => {
 });
 
 
-test('End to End Test for Guest user', { tag: ['@e2e', '@regression'] }, async () => {
+test('@e2e @regression End to End Test for Guest user', async () => {
 
     await performSearch();
     console.log("User searched a product.")
