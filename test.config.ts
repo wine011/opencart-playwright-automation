@@ -1,5 +1,6 @@
 export class TestConfig {
-    appUrl = 'http://localhost/opencart/';
+    //appUrl = 'http://localhost/opencart/';
+    appUrl = 'http://opencartdemo.free.nf/'
 
     // Valid login credentials
     email = "user1@gmail.com"

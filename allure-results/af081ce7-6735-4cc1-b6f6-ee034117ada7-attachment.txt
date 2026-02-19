@@ -1,0 +1,50 @@
+Error clicking My Account Menu: locator.click: Target page, context or browser has been closed
+Call log:
+  - waiting for locator('a.dropdown-toggle').locator('i').nth(1)
+
+    at HomePage.clickMyAccountMenu (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:40:38)
+    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:32:20 {
+  [Symbol(step)]: {
+    location: {
+      file: '/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts',
+      line: 40,
+      column: 38,
+      function: 'HomePage.clickMyAccountMenu'
+    },
+    category: 'pw:api',
+    title: "Click locator('a.dropdown-toggle').locator('i').nth(1)",
+    apiName: 'locator.click',
+    params: {
+      selector: 'a.dropdown-toggle >> i >> nth=1',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@36',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@36',
+      _title: "Click locator('a.dropdown-toggle').locator('i').nth(1)",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1771477314206,
+    error: {
+      message: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('a.dropdown-toggle').locator('i').nth(1)\x1B[22m\n",
+      stack: 'Error: locator.click: Target page, context or browser has been closed\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('a.dropdown-toggle').locator('i').nth(1)\x1B[22m\n" +
+        '\n' +
+        '    at HomePage.clickMyAccountMenu (/Users/wine/Desktop/Playwright_Opencart/pages/HomePage.ts:40:38)\n' +
+        '    at /Users/wine/Desktop/Playwright_Opencart/tests/logout.spec.ts:32:20',
+      cause: undefined
+    }
+  }
+}
