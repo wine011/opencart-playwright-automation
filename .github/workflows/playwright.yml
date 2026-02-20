@@ -7,12 +7,55 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
-    
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: opencart
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v4
+
+    - name: Install PHP & Extensions
+      run: |
+        sudo apt update
+        sudo apt install -y php php-mysql unzip
+
+    - name: Download OpenCart
+      run: |
+        wget https://github.com/opencart/opencart/releases/latest/download/opencart.zip
+        unzip opencart.zip
+        mv upload/* .
+        chmod -R 777 storage/
+
+    - name: Configure OpenCart
+      run: |
+        cp config-dist.php config.php
+        cp admin/config-dist.php admin/config.php
+
+        sed -i "s/username_here/root/" config.php
+        sed -i "s/password_here/root/" config.php
+        sed -i "s/database_name_here/opencart/" config.php
+
+        sed -i "s/username_here/root/" admin/config.php
+        sed -i "s/password_here/root/" admin/config.php
+        sed -i "s/database_name_here/opencart/" admin/config.php
+
+    - name: Start PHP Server
+      run: |
+        php -S localhost:8000 &
+        sleep 5
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -26,6 +69,8 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
+      env:
+        APP_URL: http://localhost:8000
       run: npx playwright test
       #run: npx playwright test --grep "@sanity"
       #run: npm run test:sanity
