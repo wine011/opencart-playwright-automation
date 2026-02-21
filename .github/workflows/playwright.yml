@@ -2,10 +2,10 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-  workflow_dispatch:  # allows manual trigger
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -37,18 +37,22 @@ jobs:
 
       - name: Copy OpenCart Files
         run: |
-          cp -r .github/ci-opencart/upload/* .
-          chmod -R 777 storage/
-      
-      # Optional: pre-seed database if needed
-      - name: Seed Database
+          cp -r opencart/* .
+          chmod -R 777 system/storage || true
+
+      - name: Ensure Config Files Exist
         run: |
-          mysql -h 127.0.0.1 -uroot -proot opencart < .github/ci-opencart/db_seed.sql || echo "No seed file found"
+          if [ -f config-dist.php ]; then mv config-dist.php config.php; fi
+          if [ -f admin/config-dist.php ]; then mv admin/config-dist.php admin/config.php; fi
+
+      - name: Wait for MySQL
+        run: |
+          sleep 15
 
       - name: Start PHP Server
         run: |
           php -S localhost:8000 &
-          sleep 10  # wait for server to be ready
+          sleep 10
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
