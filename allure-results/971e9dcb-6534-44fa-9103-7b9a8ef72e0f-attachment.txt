@@ -1,4 +1,0 @@
-User searched a product.
-User added a product to the cart.
-Clicked on Shopping Cart Link.
-User updated the cart!
