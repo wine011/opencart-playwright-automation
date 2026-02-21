@@ -17,7 +17,7 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: opencart
+          MYSQL_DATABASE: openshop
         ports:
           - 3306:3306
         options: >-
@@ -27,49 +27,61 @@ jobs:
           --health-retries=5
 
     steps:
+      # 1️⃣ Checkout repo
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install PHP & Extensions
+      # 2️⃣ Install PHP and MySQL client
+      - name: Install PHP & MySQL Client
         run: |
           sudo apt update
-          sudo apt install -y php php-mysql unzip
+          sudo apt install -y php php-mysqli php-mysql unzip default-mysql-client
 
+      # 3️⃣ Copy OpenCart folder
       - name: Copy OpenCart Files
         run: |
           cp -r opencart/* .
           chmod -R 777 system/storage || true
 
+      # 4️⃣ Ensure config files exist
       - name: Ensure Config Files Exist
         run: |
           if [ -f config-dist.php ]; then mv config-dist.php config.php; fi
           if [ -f admin/config-dist.php ]; then mv admin/config-dist.php admin/config.php; fi
 
-      - name: Wait for MySQL
+      # 5️⃣ Import pre-installed database
+      - name: Import Database
         run: |
-          sleep 15
+          until mysqladmin ping -h 127.0.0.1 -uroot -proot --silent; do sleep 2; done
+          mysql -h 127.0.0.1 -uroot -proot openshop < .github/workflows/ci-opencart/openshop.sql
 
+      # 6️⃣ Start PHP server
       - name: Start PHP Server
         run: |
           php -S localhost:8000 &
-          sleep 10
+          for i in {1..30}; do curl -sf http://localhost:8000 > /dev/null && break || sleep 1; done
 
+      # 7️⃣ Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
-      - name: Install dependencies
+      # 8️⃣ Install Node dependencies
+      - name: Install Dependencies
         run: npm ci
 
+      # 9️⃣ Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests
+      # 🔟 Run Playwright tests
+      - name: Run Playwright Tests
         env:
           APP_URL: http://localhost:8000
         run: npx playwright test
 
+      # 11️⃣ Upload Playwright HTML report
       - name: Upload Playwright HTML Report
         if: always()
         uses: actions/upload-artifact@v4
