@@ -1,2 +1,0 @@
-Shopping cart is empty, skipping click action.
-Clicked on Shopping Cart Link and View Cart Button.

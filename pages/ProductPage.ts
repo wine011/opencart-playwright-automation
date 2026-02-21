@@ -1,5 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { ShoppingCartPage } from './ShoppingCartPage';
+import { TestConfig } from '../test.config';
 
 export class ProductPage {
     // Define variables
@@ -78,10 +79,10 @@ export class ProductPage {
     }*/
 
     // Click on View Cart Button
-    // ProductPage.ts
     async clickViewCartButton(): Promise<ShoppingCartPage> {
         // Directly navigate to the cart page to avoid flaky dropdown
-        await this.page.goto('http://localhost/opencart/index.php?route=checkout/cart&language=en-gb');
+        const baseUrl = new TestConfig().appUrl.replace(/\/$/, '');
+        await this.page.goto(`${baseUrl}/index.php?route=checkout/cart&language=en-gb`);
         return new ShoppingCartPage(this.page);
     }
 
