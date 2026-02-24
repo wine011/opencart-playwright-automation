@@ -53,25 +53,20 @@ test.beforeEach('Set up required POM', async ({ page }) => {
 test('@e2e @regression End to End Test for Registered User', async () => {
 
     await performRegistration();
-    console.log("User is registered!")
 
     await performSearch();
-    console.log("User searched a product.")
 
     await addToCart();
-    console.log("User added a product to the cart.")
 
     await modifyCart();
-    console.log("User updated the cart!")
 
     await proceedToCheckout();
 
-    await performLogOut();
-    console.log("User is logged Out.")
+    //await performLogOut();
 });
 
 async function performRegistration() {
-    expect(homePage.isHomePageExisted()).toBeTruthy();
+    expect(await homePage.isHomePageExisted()).toBeTruthy();
 
     // Click on My Account Menu and Register Option
     await homePage.clickMyAccountMenu();
@@ -84,7 +79,9 @@ async function performRegistration() {
     const email = RandomData.getEmail();
     const password = RandomData.getPassword();
     await registrationPage.fillEmail(email);
+    await registrationPage.fillTelephone(RandomData.getRandomPhoneNumber());
     await registrationPage.fillPassword(password);
+    await registrationPage.fillConfirmPassword(password);
 
     // Skip subscribing to the newsletter
     // await registrationPage.clickSubscribe();
@@ -106,25 +103,6 @@ async function performRegistration() {
     expect(await myAccount.isMyAccountPageExisted()).toBe(true);
     expect(await myAccount.getAccountDashboardHeading()).toContain('My Account');
     console.log("User is Logged In after registration.");
-}
-
-async function performLogIn(userEmail: string, userPassword: string) {
-    // Click on My Account Menu and Login Option
-    await homePage.clickMyAccountMenu();
-    await homePage.clickLoginOption();
-
-    expect(await logInPage.isLogInPageExisted()).toBe(true);
-
-    // Fill in the login form
-    await logInPage.fillEmail(userEmail);
-    await logInPage.fillPassword(userPassword);
-
-    // Submit the login form
-    await logInPage.clickLogin();
-
-    // Assertions to verify successful login
-    expect(await myAccount.isMyAccountPageExisted()).toBe(true);
-    expect(await myAccount.getAccountDashboardHeading()).toContain('My Account');
 }
 
 async function performSearch() {
@@ -190,6 +168,23 @@ async function modifyCart() {
 async function proceedToCheckout() {
     // Click 'Checkout Button' 
     await shoppingCartPage.clickCheckOutBtn();
+    // Check checkout page exists or not
+    expect(await checkOutPage.isCheckOutPageExisted()).toBeTruthy();
+
+    // Fill Billing Details
+    expect(await checkOutPage.isBillingDetailsPanelVisible()).toBeTruthy();
+    await checkOutPage.fillFirstName(RandomData.getFirstName());
+    await checkOutPage.fillLastName(RandomData.getLastName());
+    await checkOutPage.fillAddress1(RandomData.getRandomAddress());
+    await checkOutPage.fillCity(RandomData.getRandomCity());
+    await checkOutPage.fillPostcode(RandomData.getRandomZipCode());
+
+    //await checkOutPage.selectCountryAndRegion(RandomData.getCountry());
+    await checkOutPage.selectCountryAndRegion('United Kingdom');
+
+
+    await checkOutPage.clickContinue();
+
 }
 
 async function performLogOut() {

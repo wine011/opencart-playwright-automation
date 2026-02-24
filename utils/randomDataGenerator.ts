@@ -13,6 +13,10 @@ export class RandomData {
         return faker.internet.email();
     }
 
+    static getRandomPhoneNumber() {
+        return faker.phone.number();
+    }
+
     static getPassword(length: number = 10) {
         return faker.internet.password({ length });
     }

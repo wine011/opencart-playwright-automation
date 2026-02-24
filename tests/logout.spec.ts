@@ -23,7 +23,6 @@ test.beforeEach('Set up required POM', async ({ page }) => {
 });
 
 test.afterEach('Close the browser', async ({ page }) => {
-    await page.waitForTimeout(3000);
     await page.close();
 });
 

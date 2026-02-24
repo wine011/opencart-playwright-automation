@@ -16,10 +16,12 @@ export class LogOutPage {
 
     // Define actions/methods
     async isLogOutPageExisted(): Promise<boolean> {
-        if (await this.page.title()) {
+        try {
+            await this.logOutHeader.waitFor({ state: 'visible', timeout: 5000 });
             return true;
-        }
-        return false;
+        } catch {
+            return false;
+        }   
     }
 
     // Check the header

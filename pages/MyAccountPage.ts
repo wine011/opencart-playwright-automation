@@ -10,17 +10,19 @@ export class MyAccountPage {
     // Define constructor
     constructor(page: Page) {
         this.page = page;
-        this.accountDashboardHeading = page.locator('h1:has-text("My Account")');
+        this.accountDashboardHeading = page.locator('h2:has-text("My Account")');
         this.logoutlink = page.locator('a').filter({ hasText: 'Logout' }).last();
     }
 
     // Define actions/methods
-    // check My Account page exists or not
+    // Check My Account page exists or not
     async isMyAccountPageExisted(): Promise<boolean> {
-        if (await this.page.title()) {
+        try {
+            await this.accountDashboardHeading.waitFor({ state: 'visible', timeout: 5000 });
             return true;
+        } catch {
+            return false;
         }
-        return false;
     }
 
     // Confirm account dashboard page

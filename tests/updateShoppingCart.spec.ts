@@ -21,8 +21,7 @@ test.beforeEach('Set up required configuration', async ({ page }) => {
     await page.goto(config.appUrl, { waitUntil: 'domcontentloaded' });
 });
 
-test.afterEach('Close the browser', async ({ page }) => {
-    await page.waitForTimeout(3000);
+test.afterEach('Cleanup', async ({ page }) => {
     await page.close();
 });
 
@@ -31,8 +30,10 @@ test('@sanity @regression Verify shopping cart is updated successfully', async (
     expect(await homePage.isHomePageExisted()).toBeTruthy();
 
     // Search for a product
-    await homePage.fillSearchBox(config.productName);
-    await homePage.clickSearchButton();
+    await searchPage.searchProduct(config.productName);
+
+    // Confirm search results
+    expect(await searchPage.getSearchHeading()).toContain('Search - ' + config.productName);
 
     // Click first product in search results
     await searchPage.clickFirstProductInSearchResults();
@@ -48,7 +49,7 @@ test('@sanity @regression Verify shopping cart is updated successfully', async (
 
     // Click on Shopping Cart Link
     await productPage.clickShoppingCartLink();
-    console.log('Clicked on Shopping Cart Link.');
+
     // Click on View Cart Button
     await productPage.clickViewCartButton();
 

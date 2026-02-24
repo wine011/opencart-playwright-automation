@@ -19,8 +19,7 @@ test.beforeEach('Set up required POM', async ({ page }) => {
     await page.goto(config.appUrl, { waitUntil: 'domcontentloaded' });
 });
 
-test.afterEach('Close the browser', async ({ page }) => {
-    await page.waitForTimeout(3000);
+test.afterEach('Cleanup', async ({ page }) => {
     await page.close();
 });
 

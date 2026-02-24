@@ -18,24 +18,29 @@ test.beforeEach('Set up required POM', async ({ page }) => {
     await page.goto(config.appUrl, { waitUntil: 'domcontentloaded' });
 });
 
-test.afterEach('Close the browser', async ({ page }) => {
-    await page.waitForTimeout(3000);
+test.afterEach('Cleanup', async ({ page }) => {
     await page.close();
 });
 
 test('@sanity @regression @auth Verify the account registration functionality', async () => {
-
-    homePage.isHomePageExisted();
+    expect(await homePage.isHomePageExisted()).toBeTruthy();
 
     // Click on My Account Menu and Register Option
     await homePage.clickMyAccountMenu();
     await homePage.clickRegisterOption();
 
+    // Check register account page is existed
+    expect(await registrationPage.isRegisterAccountPageExisted()).toContain("Register Account");
+
     // Fill in the registration form
     await registrationPage.fillFirstName(RandomData.getFirstName());
     await registrationPage.fillLastName(RandomData.getLastName());
     await registrationPage.fillEmail(RandomData.getEmail());
-    await registrationPage.fillPassword(RandomData.getPassword());
+    await registrationPage.fillTelephone(RandomData.getRandomPhoneNumber());
+
+    const password = RandomData.getPassword();
+    await registrationPage.fillPassword(password);
+    await registrationPage.fillConfirmPassword(password);
 
     // Skip subscribing to the newsletter
     // await registrationPage.clickSubscribe();

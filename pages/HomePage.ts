@@ -14,10 +14,10 @@ export class HomePage {
     // Define constructor (locators can be added here))
     constructor(page: Page) {
         this.page = page;
-        this.myAccountMenu = page.locator('a.dropdown-toggle').locator('i').nth(1)
+        this.myAccountMenu = page.getByTitle('My Account');
         this.registerOption = page.getByRole('link', { name: 'Register' });
         this.loginOption = page.getByRole('link', { name: 'Login' });
-        this.searchBox = page.getByRole('textbox', { name: 'Search' });
+        this.searchBox = page.getByRole('textbox', { name: /Search/i })
         this.searchButton = page.locator('button.btn.btn-light.btn-lg');
         /*this.shoppingCartLink = page.getByRole('button').nth(1);
         this.viewCartButton = page.getByText('View Cart', { exact: true });
@@ -28,10 +28,12 @@ export class HomePage {
 
     // Check homepage exists or not
     async isHomePageExisted(): Promise<boolean> {
-        if (await this.page.title()) {
+        try {
+            await this.searchBox.waitFor({ state: 'visible', timeout: 5000 });
             return true;
+        } catch {
+            return false;
         }
-        return false;
     }
 
     // Click on My Account Menu

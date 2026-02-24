@@ -23,10 +23,12 @@ export class LogInPage {
 
     // Check login page exists or not
     async isLogInPageExisted(): Promise<boolean> {
-        if (await this.page.title()) {
+        try {
+            await this.emailField.waitFor({ state: 'visible', timeout: 5000 });
             return true;
+        } catch {
+            return false;
         }
-        return false;
     }
 
     // Fill in email
