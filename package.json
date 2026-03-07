@@ -9,7 +9,6 @@
     "test:e2e": "npx playwright test --grep @e2e",
     "test:auth": "npx playwright test --grep @auth",
     "test:all": "npx playwright test --grep @sanity @regression @e2e @auth"
-
   },
   "keywords": [],
   "author": "",
@@ -18,7 +17,7 @@
   "devDependencies": {
     "@playwright/test": "^1.57.0",
     "@types/node": "^25.0.9",
-    "allure-playwright": "^3.4.5"
+    "allure-playwright": "^3.6.0"
   },
   "dependencies": {
     "@faker-js/faker": "^10.2.0",
