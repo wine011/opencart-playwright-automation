@@ -7,6 +7,10 @@ export class TestConfig {
     email = "user1@gmail.com"
     password = "asdf123"; // 7 characters : software limit- should between 4 and 20 characters
 
+    // Invalid email and valid password login credentials
+    invalidEmail = "invalid@gmail.com"
+    validPassword = "asdf123";
+
     // Product details
     productName = "macbook"
     productQuantity = "1"

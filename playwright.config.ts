@@ -45,6 +45,9 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     permissions: ['geolocation'],
+    /*launchOptions: {
+      slowMo: 500
+    }*/
   },
 
   //grep: /@master/,

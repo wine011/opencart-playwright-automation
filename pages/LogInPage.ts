@@ -16,7 +16,7 @@ export class LogInPage {
         this.passwordField = page.getByRole('textbox', { name: 'Password' });
         this.loginButton = page.getByRole('button', { name: 'Login' });
         this.forgotPasswordLink = page.locator('a').filter({ hasText: 'Forgotten Password' }).first();
-        this.loginErrorMessage = page.locator('#alert');
+        this.loginErrorMessage = page.getByText('Warning: No match for E-Mail Address and/or Password.', { exact: true });
     }
 
     // Define actions/methods
@@ -24,7 +24,7 @@ export class LogInPage {
     // Check login page exists or not
     async isLogInPageExisted(): Promise<boolean> {
         try {
-            await this.emailField.waitFor({ state: 'visible', timeout: 5000 });
+            await this.emailField.waitFor({ timeout: 5000 });
             return true;
         } catch {
             return false;

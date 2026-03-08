@@ -45,3 +45,23 @@ test('@sanity @regression @auth Verify the login functionality with valid creden
     expect(await myAccount.getAccountDashboardHeading()).toContain('My Account');
 
 });
+
+test('Verify the login functionality with invalid email and valid password', async () => {
+    expect(await homePage.isHomePageExisted()).toBe(true);
+
+    // Click on My Account Menu and Login Option
+    await homePage.clickMyAccountMenu();
+    await homePage.clickLoginOption();
+
+    expect(await logInPage.isLogInPageExisted()).toBe(true);
+
+    // Fill in the login form with invalid email and valid password
+    await logInPage.fillEmail(config.invalidEmail);
+    await logInPage.fillPassword(config.validPassword);
+
+    // Submit the login form
+    await logInPage.clickLogin();
+
+    // Assertions to verify failed login
+    expect(await logInPage.getLoginErrorMessage()).toContain('Warning: No match for E-Mail Address and/or Password.');
+});
