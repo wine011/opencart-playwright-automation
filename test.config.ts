@@ -1,6 +1,7 @@
 export class TestConfig {
     //appUrl = 'http://localhost/opencart/';
     //appUrl = 'http://opencartdemo.free.nf/';
+    //appUrl = 'https://demo.opencart.com/';
     appUrl = process.env.APP_URL || 'http://localhost/opencart/';
 
     // Valid login credentials
